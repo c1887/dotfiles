@@ -1,0 +1,14 @@
+# Setup one builddir per build type
+BUILDDIR="/home/${USER}/dune_cmake/build-release"
+
+# Used compiler
+CXX=/usr/bin/g++
+
+# Use CMAKE_PREFIX_PATH to tell CMake some specific stuff, e.g. to use a Debug build
+# The -lgfortran flag is mandatory on Fedora, on Debian and Ubuntu, however, apparently not
+CMAKE_FLAGS="
+    -DCMAKE_CXX_COMPILER='$CXX' \
+    -DCMAKE_CXX_FLAGS='-O3 -DNDEBUG -funroll-loops -march=native -lgfortran -fdiagnostics-color=auto' \
+    -DCMAKE_PREFIX_PATH='$CMAKE_PREFIX_PATH' \
+"
+
